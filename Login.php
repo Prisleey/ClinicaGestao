@@ -25,8 +25,8 @@
 				if($d_usuario["pwd"] == $pwd){
 					$_SESSION["id_usuario"] = $d_usuario["id"];
 					$_SESSION["logado"] = "sim";
-					//header("Location: teste.php");
-					echo '<script>location.href="teste.php";</script>';
+
+					echo '<script>location.href="agendar-consulta.php";</script>';
 				} else {
 					$Erro = "CPF e/ou Senha errado(s)!";
 					return $Erro;
