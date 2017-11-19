@@ -1,4 +1,4 @@
-<?php
+  <?php
   require_once('Login.php');
    
   $objConnection = new Connection();
@@ -34,10 +34,10 @@
             <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="agendar-consulta.php">Sobre</a>
+            <a class="nav-link" href="agendar-consulta.php">Agendar Consulta</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+          <a class="nav-link" href="listar-consultas-medico.php">Minhas Consultas</a>
           </li>
 		  <li class="nav-item dropwdown">
 			<div class="dropdown show">
@@ -94,7 +94,7 @@
 !-->
 
 
-    <div class="container">
+    <div class="container col-xs-offset-3 col-xs-3 col-md-offset-3 col-md-3">
         <br>
         <h1>Clinica Odonto</h1>
         <form action='' method='POST' class='form-signin'>
@@ -164,7 +164,6 @@
 
       <!-- FOOTER -->
       <footer>
-        <p class="float-right"><a href="#">Back to top</a></p>
         <p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
 
