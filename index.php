@@ -3,6 +3,11 @@
    
   $objConnection = new Connection();
   $objLogin = new Login();
+
+  if(isset($_POST["Login"]) && $_POST["Login"] == "Login") { 
+    $logar = $objLogin->Logar($_POST["cpf"], $_POST['senha']);
+    echo $logar;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -108,12 +113,6 @@
             </div>
             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login" name="Login" style="width: 300px"/>
           </form>
-          <?php 
-            if(isset($_POST["Login"]) && $_POST["Login"] == "Login") { 
-              $logar = $objLogin->Logar($_POST["cpf"], $_POST['senha']);
-              echo $logar;
-            }
-          ?>
 
       <!-- START THE FEATURETTES 
 
