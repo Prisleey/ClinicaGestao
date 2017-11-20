@@ -65,6 +65,9 @@
         <form class="form-inline mt-2 mt-md-0" action="" method="POST">
 				<button class="btn btn-outline-danger my-2 my-sm-0" name="Logout" value="Logout" type="submit">Logout</button>
 			</form>
+			<?php
+					
+			?>
       </div>
     </nav>
 	<br>
