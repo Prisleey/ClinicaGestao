@@ -34,33 +34,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="agendar-consulta.php">Agendar Consulta</a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link" href="listar-consultas-medico.php">Minhas Consultas</a>
-          </li>
-		  <li class="nav-item dropwdown">
-			<div class="dropdown show">
-			  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Sistema
-			  </a>
-
-			  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-				<a class="dropdown-item" href="agendar-consulta.php">Agendar Consulta</a>
-				<a class="dropdown-item" href="#">Cursos</a>
-				<a class="dropdown-item" href="#">Alunos</a>
-				<a class="dropdown-item" href="#">Turmas</a>
-				<a class="dropdown-item" href="#">Horarios</a>
-				<a class="dropdown-item" href="#">Conheça a escola</a>
-			  </div>
-			</div>
-		  </li>
-        </ul>
+        
       </div>
     </nav>
 <!--
