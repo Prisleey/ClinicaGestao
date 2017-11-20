@@ -5,6 +5,9 @@
 
 	class Login {
 
+		//private $date = new Date('Y-m-d');
+		//private $brasil = implode('/', array_reverse(explode('-',$date)));
+
 		private $objConnection;
 		private $objUsuario;
 
@@ -49,7 +52,7 @@
 
 		function deslogar(){
 			session_destroy();
-			header("Location: dirname(__FILE__)/../index.php");
+			echo '<script>location.href="index.php";</script>';
 		}
 	}
 ?>

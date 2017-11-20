@@ -1,4 +1,4 @@
-  <?php
+<?php
   require_once('Login.php');
    
   $objConnection = new Connection();
@@ -56,9 +56,6 @@
 			</div>
 		  </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
-        </form>
       </div>
     </nav>
 <!--

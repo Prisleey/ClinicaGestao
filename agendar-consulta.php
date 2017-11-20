@@ -1,3 +1,11 @@
+<?php
+	session_start();
+  require_once('Login.php');
+   
+  $objConnection = new Connection();
+  $objLogin = new Login();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,9 +57,14 @@
 			</div>
 		  </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
-					<button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
-				</form>
+        <form class="form-inline mt-2 mt-md-0" action="" method="POST">
+				<button class="btn btn-outline-danger my-2 my-sm-0" name="Logout" value="Logout" type="submit">Logout</button>
+			</form>
+			<?php
+					if(isset($_POST['Logout']) && $_POST['Logout']) {
+						$logout = $objLogin->deslogar();
+					}
+			?>
       </div>
     </nav>
 	<br>
