@@ -1,13 +1,16 @@
 <?php 
 	session_start();
 	require_once('Connection.php');
+	require_once('Usuario.php');
 
 	class Login {
 
 		private $objConnection;
+		private $objUsuario;
 
 		public function __construct(){
 			$this->objConnection = new Connection();
+			$this->objUsuario = new Usuario();
 		}
 
 		public function verificarLogado(){
@@ -22,9 +25,12 @@
 
 			if(mysqli_num_rows($sql) == 1){
 				$d_usuario = mysqli_fetch_array($sql);
-				if($d_usuario["pwd"] == $pwd){
-					$_SESSION["id_usuario"] = $d_usuario["id"];
-					$_SESSION["logado"] = "sim";
+				if($d_usuario['pwd'] == $pwd) {
+					$this->objUsuario->setName($d_usuario['name']);
+					$this->objUsuario->setCpf($d_usuario['cpf']);
+					$this->objUsuario->setPwd($d_usuario['pwd']);
+					$_SESSION['id_usuario'] = $d_usuario['id'];
+					$_SESSION['logado'] = "sim";
 
 					echo '<script>location.href="agendar-consulta.php";</script>';
 				} else {

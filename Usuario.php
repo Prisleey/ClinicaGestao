@@ -29,14 +29,4 @@
 			return $this->pwd;
 		}
 	}
-
-	$obj = new Usuario();
-
-	$obj->setName('Prislaoo');
-	$obj->setCpf('123');
-	$obj->setPwd('123');
-
-	echo $obj->getName();
-	echo $obj->getCpf();
-	echo $obj->getPwd();
 ?>
