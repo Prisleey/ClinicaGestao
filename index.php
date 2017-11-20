@@ -5,7 +5,7 @@
   $objLogin = new Login();
 
   if(isset($_POST["Login"]) && $_POST["Login"] == "Login") { 
-    $logar = $objLogin->Logar($_POST["cpf"], $_POST['senha']);
+    $logar = $objLogin->Logar($_POST["documento"], $_POST['senha']);
     echo $logar;
   }
 ?>
@@ -76,8 +76,8 @@
             <br><br>
             <!--<h3 class="form-signin-heading">Por favor Logue no Sistema!</h2>-->
             <br>
-            <label for="inputCPF" class="sr-only">CPF</label>
-            <input type="text" id="inputCPF" name="cpf" class="form-control" style="width: 300px" placeholder="CPF" required autofocus>
+            <label for="inputDoc" class="sr-only">CPF</label>
+            <input type="text" id="inputDoc" name="documento" class="form-control" style="width: 300px" placeholder="CPF/CRM" required autofocus>
             <label for="inputPassword" class="sr-only">Senha</label>
             <input type="password" id="inputPassword" name="senha" class="form-control"  style="width: 300px" placeholder="Senha" required>
             <div class="checkbox">
