@@ -25,6 +25,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
+	
   </head>
   <body>
 
