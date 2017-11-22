@@ -4,9 +4,17 @@
   $objConnection = new Connection();
   $objLogin = new Login();
 
+  if(isset($_SESSION['logado']) && $_SESSION['logado'] == "sim") {
+    if(isset($_SESSION['tp_user']) && $_SESSION['tp_user'] == 1) {
+      echo '<script>location.href="agendar-consulta.php";</script>';
+    } else if(isset($_SESSION['tp_user']) && $_SESSION['tp_user'] == 2) {
+      echo '<script>location.href="listar-consultas-medico.php";</script>';
+    }
+  }
+
   if(isset($_POST["Login"]) && $_POST["Login"] == "Login") { 
     $logar = $objLogin->Logar($_POST["documento"], $_POST['senha']);
-    echo $logar;
+    //echo $logar;
   }
 ?>
 
@@ -85,6 +93,7 @@
                 <input type="checkbox" value="remember-me"> Salvar dados
               </label>
             </div>
+            <?php echo isset($logar) ? $logar : ""; ?>
             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login" name="Login" style="width: 300px"/>
           </form>
 

@@ -24,21 +24,22 @@
 		}
 
 		public function Logar($documento, $pwd){
-			$sql = mysqli_query($this->objConnection->getConn(), "SELECT * FROM tb_user WHERE documento = $documento") or die(mysqli_error());
+			$sql = mysqli_query($this->objConnection->getConn(), "SELECT * FROM tb_user WHERE documento = '$documento' AND pwd = '$pwd'") or die(mysqli_error());
 
 			if(mysqli_num_rows($sql) == 1){
 				$d_usuario = mysqli_fetch_array($sql);
-				if($d_usuario['pwd'] == $pwd) {
-					/*$this->objUsuario->setName($d_usuario['name']);
-					$this->objUsuario->setCpf($d_usuario['documento']);
-					$this->objUsuario->setPwd($d_usuario['pwd']);*/
-					$_SESSION['id_usuario'] = $d_usuario['id'];
-					$_SESSION['logado'] = "sim";
-
+				/*$this->objUsuario->setName($d_usuario['name']);
+				$this->objUsuario->setCpf($d_usuario['documento']);
+				$this->objUsuario->setPwd($d_usuario['pwd']);*/
+				$_SESSION['id_usuario'] = $d_usuario['id'];
+				$_SESSION['nome_user'] = $d_usuario['name'];
+				$_SESSION['documento'] = $d_usuario['documento'];
+				$_SESSION['tp_user'] = $d_usuario['tp_user'];
+				$_SESSION['logado'] = "sim";
+				if($d_usuario['tp_user'] == 1) {
 					echo '<script>location.href="agendar-consulta.php";</script>';
-				} else {
-					$Erro = "Documento e/ou Senha errado(s)!";
-					return $Erro;
+				} elseif($d_usuario['tp_user'] == 2) {
+					echo '<script>location.href="listar-consultas-medico.php";</script>';
 				}
 			} else {
 				$Erro = "Documento e/ou Senha errado(s)!";
