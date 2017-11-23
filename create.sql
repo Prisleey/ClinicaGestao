@@ -21,7 +21,7 @@ CREATE TABLE tb_consulta (
 	inicio_consulta datetime not null,
     id_tp_consulta int not null,
     PRIMARY KEY (id),
-    FOREIGN KEY (id_medico) REFERENCES tb_medico (id),
+    FOREIGN KEY (id_medico) REFERENCES tb_user (id),
     FOREIGN KEY (id_user) REFERENCES tb_user (id),
     foreign key (id_tp_consulta) references tb_tipo_consulta (id)
 );
