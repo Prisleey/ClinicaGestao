@@ -1,17 +1,18 @@
 <?php
-  require_once('Login.php');
+ 	require_once('Login.php');
+ 	require_once('Connection.php');
    
-  $objConnection = new Connection();
+ 	$objConnection = new Connection();
 	$objLogin = new Login();
-	
+
 	if(isset($_POST['Logout']) && $_POST['Logout']) {
 		$logout = $objLogin->deslogar();
 	}
 
 	if(isset($_POST['Agendar']) && $_POST['Agendar']) {
 		
-		$insert = "INSERT INTO tb_consulta (id_medico, id_user, inicio_consulta, id_tp_consulta) VALUES ()";
-		$sql_query = mysqli_query($this->objConnection->getConn(), $insert) or die(mysqli_error());		
+		//$insert = "INSERT INTO tb_consulta (id_medico, id_user, inicio_consulta, id_tp_consulta) VALUES ()";
+		//$sql_query = mysqli_query($this->objConnection->getConn(), $insert) or die(mysqli_error());		
 	}
 ?>
 
@@ -61,27 +62,28 @@
 				<label for="medicos">Médicos</label>
 				<select id='medicos' name='medicos' class='form-control' type='select'>
 					<option></option>
-					<option id='1'>
-							Alberto Cardoso
-					</option>
-					<option id='2'>
-							Marina Silva
-					</option>
-					<option id='3'>
-							Julio França
-					</option>
-					<option id='4'>
-							Alberto Cardoso
-					</option>
+					<?php
+						$sql = "SELECT * FROM tb_user WHERE tp_user = 2";
+						$resultado_doutor = mysqli_query($objConnection->getConn(), $sql);
+
+						while($resultado = mysqli_fetch_assoc($resultado_doutor)) {
+							echo '<option value="'.$resultado['id'].'">'.$resultado['name'].'</option>';
+						}
+					?>
 				</select>
 			</div>
 			<div class='form-group'>
 				<label for='tpConsulta'>Tipo de Consulta</label>
 				<select id='tpConsulta' name='tpConsulta' class='form-control' type='select'>
 					<option value='0'></option>
-					<option value='1'>Consulta simples</option>
-					<option value='2'>Cirurgia</option>
-					<option value='3'>Clareamento</option>
+					<?php
+						$sql = "SELECT * FROM tb_tipo_consulta";
+						$resultado_tp_consulta = mysqli_query($objConnection->getConn(), $sql);
+
+						while($resultado = mysqli_fetch_assoc($resultado_tp_consulta)) {
+							echo '<option value="'.$resultado['id'].'">'.$resultado['tipo'].'</option>';
+						}
+					?>
 				</select>
 			</div>
 			<div class="form-group">
