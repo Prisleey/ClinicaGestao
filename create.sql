@@ -25,4 +25,3 @@ CREATE TABLE tb_consulta (
     FOREIGN KEY (id_user) REFERENCES tb_user (id),
     foreign key (id_tp_consulta) references tb_tipo_consulta (id)
 );
-
