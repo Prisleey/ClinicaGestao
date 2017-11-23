@@ -8,6 +8,31 @@
 		$logout = $objLogin->deslogar();
 	}
 
+  $sql = "SELECT 
+          a.id,
+          c.name AS name_paciente,
+          b.name AS name_medico,
+          d.tipo AS tp_consulta,
+          DATE_FORMAT(a.inicio_consulta,'%d/%m/%Y %h:%i') AS inicio_consulta,
+          CASE 
+            WHEN d.duracao = '0.5' THEN '30 Minutos'
+            WHEN d.duracao = '1.5' THEN '1 Hora e 30 Minutos'
+            WHEN d.duracao = '2' THEN '2 Horas'
+            WHEN d.duracao = '1' THEN '1 Hora'
+          END AS duracao
+        FROM
+          tb_consulta a
+        INNER JOIN
+          tb_user b ON a.id_medico = b.id
+        INNER JOIN
+          tb_user c ON a.id_user = c.id
+        INNER JOIN
+          tb_tipo_consulta d ON a.id_tp_consulta = d.id
+        WHERE c.id = ".$_SESSION['id_usuario']."
+        ";
+  $sql_query = mysqli_query($objConnection->getConn(), $sql) or die(mysqli_error());
+  $rows = mysqli_num_rows($sql_query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,27 +78,38 @@
 			
 		</form>
 		<hr class="featurette-divider">
-		<h2>Nome do fulano vindo do Banco de dados</h2>
+		<h2><?php echo $_SESSION['nome_user']; ?></h2>
 		<table class="table table-striped table-hover">
 		  <thead>
 			<tr>
 			  <th>Código Consulta</th>
-			  <th>Nome Paciente</th>
-			  <th>Nome Medico</th>
+			  <!--<th>Nome Paciente</th>-->
+			  <th>Nome Doutor</th>
 				<th>Tipo Consulta</th>
 				<th>Horário</th>
 				<th>Duração</th>
 			</tr>
 		  </thead>
 		  <tbody>
-			<tr>
-			  <td>1</td>
-			  <td>Felipe</td>
-			  <td>Jose</td>
-				<td>Clareamento</td>
-				<td>15/12/2017 10:00</td>
-				<td>1 hora</td>
-			</tr>
+			<?php 
+        while($resultado = mysqli_fetch_assoc($sql_query)) {
+          echo "<tr>";
+            echo "<td>".$resultado['id']."</td>";
+            //echo "<td>".$resultado['name_paciente']."</td>";
+            echo "<td>".$resultado['name_medico']."</td>";
+            echo "<td>".$resultado['tp_consulta']."</td>";
+            echo "<td>".$resultado['inicio_consulta']."</td>";
+            echo "<td>".$resultado['duracao']."</td>";
+          echo "</tr>";
+        }
+        if($rows == 0) {
+          echo "
+            <tr>
+              <td align='center' colspan='5'>Você ainda não tem consultas agendadas com nenhum paciente.</td>
+            </tr>
+          ";
+        }
+      ?>
 		  </tbody>
 		</table>
 

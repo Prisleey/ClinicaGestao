@@ -2,8 +2,8 @@
 	require_once('Connection.php');
 	$objConnection = new Connection();
 
-	if(isset($_GET['id'])) {
-		$id_medico = $_GET['id'];
+	if(isset($_POST['id'])) {
+		$id_medico = $_POST['id'];
 		$sql = "SELECT
 				DATE_FORMAT(a.inicio_consulta,'%Y') as ano,
 				DATE_FORMAT(a.inicio_consulta,'%m') as mes,

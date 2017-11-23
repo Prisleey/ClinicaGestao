@@ -32,7 +32,7 @@
           WHERE b.id = ".$_SESSION['id_usuario']."
           ";
   $sql_query = mysqli_query($objConnection->getConn(), $sql) or die(mysqli_error());
-
+  $rows = mysqli_num_rows($sql_query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,7 +98,7 @@
             echo "<td>".$resultado['duracao']."</td>";
           echo "</tr>";
         }
-        if($resultado == NULL) {
+        if($rows == 0) {
           echo "
             <tr>
               <td align='center' colspan='5'>Você ainda não tem consultas agendadas com nenhum paciente.</td>

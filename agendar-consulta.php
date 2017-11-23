@@ -31,7 +31,6 @@
 
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="  crossorigin="anonymous"></script>
   </head>
   <body>
 
@@ -87,83 +86,8 @@
 				</select>
 			</div>
 			<div class="form-group">
-					<label for="mes">Mês</label>
-					<select id='mes' name='mes' class='form-control' type='select'>
-							<option value='0'></option>
-							<option value='1'>
-									Janeiro
-							</option>
-							<option value='2'>
-									Fevereiro
-							</option>
-							<option value='3'>
-									Março
-							</option>
-							<option id='4'>
-									Abril
-							</option>
-							<option value='5'>
-									Maio
-							</option>
-							<option value='6'>
-									Junho
-							</option>
-							<option value='7'>
-									Julho
-							</option>
-							<option value='8'>
-									Agosto
-							</option>
-							<option value='9'>
-									Setembro
-							</option>
-							<option id='10'>
-									Outubro
-							</option>
-							<option id='11'>
-									Novembro
-							</option>
-							<option id='12'>
-									Dezembro
-							</option>
-						</select>
-				</div>
-			<div class="form-group">
-					<label for="dia">Dia</label>
-					<select id='dia' name='dia' class='form-control' type='select'>
-						<option value='0'></option>
-						<option value='1'>1</option>
-						<option value='2'>2</option>
-						<option value='3'>3</option>
-						<option value='4'>4</option>
-						<option value='5'>5</option>
-						<option value='6'>6</option>
-						<option value='7'>7</option>
-						<option value='8'>8</option>
-						<option value='9'>9</option>
-						<option value='10'>10</option>
-						<option value='11'>11</option>
-						<option value='12'>12</option>
-						<option value='13'>13</option>
-						<option value='14'>14</option>
-						<option value='15'>15</option>
-						<option value='16'>16</option>
-						<option value='17'>17</option>
-						<option value='18'>18</option>
-						<option value='19'>19</option>
-						<option value='20'>20</option>
-						<option value='21'>21</option>
-						<option value='22'>22</option>
-						<option value='23'>23</option>
-						<option value='24'>24</option>
-						<option value='25'>25</option>
-						<option value='26'>26</option>
-						<option value='27'>27</option>
-						<option value='28'>28</option>
-						<option value='29'>29</option>
-						<option value='30'>30</option>
-						<option value='31'>31</option>
-					</select>
+				<label for="idDataVenc">Data Vencimento</label>
+				<input type="text" class="form-control" id="idData" name="inputData" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" required/>
 			</div>
 			<div class="form-group">
 				<label for="horario">Horário</label>
@@ -196,7 +120,7 @@
 					<option value='2'>Cartão</option>
 				</select>
 			</div>
-			<button class="btn btn-outline-success my-2 my-sm-0" name="Agendar" value="Agendar" type="submit">Logout</button>
+			<button class="btn btn-outline-success my-2 my-sm-0" name="Agendar" value="Agendar" type="submit">Agendar</button>
 		</form>
 		<hr class="featurette-divider">
 	
@@ -212,7 +136,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/vendor/jquery-slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')</script>
     <script src="js/vendor/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -222,13 +146,34 @@
     <!-- <script src="js/ie10-viewport-bug-workaround.js"></script> -->
 
 	<!-- AQUI QUE O BIXO PEGA -->
-	<script>
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<script type='text/javascript'>
 		$(document).ready(function(){
+			$("#idData").datepicker({
+				dateFormat: 'dd/mm/yy',
+				dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+				dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+				dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+				monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+				monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+				nextText: 'Próximo',
+				prevText: 'Anterior',
+				minDate: 0
+			});
+
 			$("#medicos").on("change",function(){
 				var id = $(this).val()
 				if(id > 0){
-					$.get("listConsultas.php?id="+id, function(data, status){
-						alert("status: "+status+" as consultas desse medico sao: " + data );
+					$.ajax({
+						type: "POST",
+						url: "listConsultas.php",
+						data: {id: id},
+						success: function (data) {
+							alert(data);
+						}
 					});
 				}else{
 					return false;
