@@ -14,8 +14,13 @@
             c.name AS name_paciente,
             b.name AS name_medico,
             d.tipo AS tp_consulta,
-            a.inicio_consulta,
-            d.duracao
+            DATE_FORMAT(a.inicio_consulta,'%d/%m/%Y %h:%m') AS inicio_consulta,
+            CASE 
+              WHEN d.duracao = '0.5' THEN '30 Minutos'
+              WHEN d.duracao = '1.5' THEN '1 Hora e 30 Minutos'
+              WHEN d.duracao = '2' THEN '2 Horas'
+              WHEN d.duracao = '1' THEN '1 Hora'
+            END AS duracao
           FROM
             tb_consulta a
           INNER JOIN
@@ -92,6 +97,13 @@
             echo "<td>".$resultado['inicio_consulta']."</td>";
             echo "<td>".$resultado['duracao']."</td>";
           echo "</tr>";
+        }
+        if($resultado == NULL) {
+          echo "
+            <tr>
+              <td align='center' colspan='5'>Você ainda não tem consultas agendadas com nenhum paciente.</td>
+            </tr>
+          ";
         }
       ?>
 		  </tbody>
