@@ -86,7 +86,7 @@
 			  <!--<th>Nome Paciente</th>-->
 			  <th>Nome Doutor</th>
 				<th>Tipo Consulta</th>
-				<th>Horário</th>
+				<th>Data / Horário</th>
 				<th>Duração</th>
 			</tr>
 		  </thead>

@@ -82,7 +82,7 @@
 			  <th>Código Consulta</th>
 			  <th>Nome Paciente</th>
 				<th>Tipo Consulta</th>
-				<th>Horário</th>
+				<th>Data / Horário</th>
 				<th>Duração</th>
 			</tr>
 		  </thead>
