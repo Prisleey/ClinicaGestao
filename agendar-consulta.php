@@ -8,6 +8,11 @@
 		$logout = $objLogin->deslogar();
 	}
 
+	if(isset($_POST['Agendar']) && $_POST['Agendar']) {
+		
+		$insert = "INSERT INTO tb_consulta (id_medico, id_user, inicio_consulta, id_tp_consulta) VALUES ()";
+		$sql_query = mysqli_query($this->objConnection->getConn(), $insert) or die(mysqli_error());		
+	}
 ?>
 
 <!DOCTYPE html>
@@ -45,9 +50,6 @@
         <form class="form-inline mt-2 mt-md-0" action="" method="POST">
 				<button class="btn btn-outline-danger my-2 my-sm-0" name="Logout" value="Logout" type="submit">Logout</button>
 			</form>
-			<?php
-					
-			?>
       </div>
     </nav>
 	<br>
@@ -194,7 +196,6 @@
 			<button class="btn btn-outline-success my-2 my-sm-0" name="Agendar" value="Agendar" type="submit">Logout</button>
 		</form>
 		<hr class="featurette-divider">
-	
 	
       <!-- FOOTER -->
       <footer>
