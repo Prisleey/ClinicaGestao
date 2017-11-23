@@ -14,7 +14,7 @@
             c.name AS name_paciente,
             b.name AS name_medico,
             d.tipo AS tp_consulta,
-            DATE_FORMAT(a.inicio_consulta,'%d/%m/%Y %h:%m') AS inicio_consulta,
+            DATE_FORMAT(a.inicio_consulta,'%d/%m/%Y %h:%i') AS inicio_consulta,
             CASE 
               WHEN d.duracao = '0.5' THEN '30 Minutos'
               WHEN d.duracao = '1.5' THEN '1 Hora e 30 Minutos'
