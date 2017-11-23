@@ -38,6 +38,9 @@
           <li class="nav-item">
             <a class="nav-link" href="agendar-consulta.php">Agendar Consulta</a>
           </li>
+					<li class="nav-item">
+            <a class="nav-link" href="listar-consultas-paciente.php">Minhas Consultas</a>
+          </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0" action="" method="POST">
 				<button class="btn btn-outline-danger my-2 my-sm-0" name="Logout" value="Logout" type="submit">Logout</button>
@@ -188,35 +191,10 @@
 					<option value='2'>Cartão</option>
 				</select>
 			</div>
+			<button class="btn btn-outline-success my-2 my-sm-0" name="Agendar" value="Agendar" type="submit">Logout</button>
 		</form>
 		<hr class="featurette-divider">
-		<h2>Minhas Consultas</h2>
-		<table class="table table-striped table-hover">
-		  <thead>
-			<tr>
-			  <th>Código Consulta</th>
-			  <th>Nome Paciente</th>
-			  <th>Nome Medico</th>
-				<th>Tipo Consulta</th>
-				<th>Tipo Pagamento</th>
-				<th>Horário</th>
-				<th>Duração</th>
-			</tr>
-		  </thead>
-		  <tbody>
-			<tr>
-			  <td>1</td>
-			  <td>Felipe</td>
-			  <td>Jose</td>
-				<td>Clareamento</td>
-				<td>Boleto</td>
-				<td>15/12/2017 10:00</td>
-				<td>1 hora</td>
-			</tr>
-		  </tbody>
-		</table>
-
-
+	
 	
       <!-- FOOTER -->
       <footer>

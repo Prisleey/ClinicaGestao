@@ -34,9 +34,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="listar-consultas-medico.php">Minhas Consultas</a>
-          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="agendar-consulta.php">Agendar Consulta</a>
+        </li>
+                    <li class="nav-item">
+            <a class="nav-link" href="listar-consultas-paciente.php">Minhas Consultas</a>
+        </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0" action="" method="POST">
         <button class="btn btn-outline-danger my-2 my-sm-0" name="Logout" value="Logout" type="submit">Logout</button>
@@ -56,6 +59,7 @@
 			<tr>
 			  <th>Código Consulta</th>
 			  <th>Nome Paciente</th>
+			  <th>Nome Medico</th>
 				<th>Tipo Consulta</th>
 				<th>Horário</th>
 				<th>Duração</th>
@@ -65,6 +69,7 @@
 			<tr>
 			  <td>1</td>
 			  <td>Felipe</td>
+			  <td>Jose</td>
 				<td>Clareamento</td>
 				<td>15/12/2017 10:00</td>
 				<td>1 hora</td>
