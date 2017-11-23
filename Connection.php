@@ -5,13 +5,13 @@
 		private $host = 'localhost';
 
 		//usuario
-		private $usuario = 'prisley';
+		private $usuario = 'root';
 
 		//senha
-		private $senha = 'rootpris';
+		private $senha = '';
 
 		//bd
-		private $database = 'gestao-projetos';
+		private $database = 'odonto';
 
 		private $con;
 

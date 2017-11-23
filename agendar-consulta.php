@@ -220,5 +220,21 @@
     <script src="js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <script src="js/ie10-viewport-bug-workaround.js"></script> -->
+
+	<!-- AQUI QUE O BIXO PEGA -->
+	<script>
+		$(document).ready(function(){
+			$("#medicos").on("change",function(){
+				var id = $(this).val()
+				if(id > 0){
+					$.get("listConsultas.php?id="+id, function(data, status){
+						alert("status: "+status+" as consultas desse medico sao: " + data );
+					});
+				}else{
+					return false;
+				}
+			});
+		});
+	</script>
   </body>
 </html>
