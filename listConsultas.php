@@ -18,9 +18,28 @@
 				WHERE a.id_medico = ".$id_medico."";
 
 		$resultado_medico  = mysqli_query($objConnection->getConn(), $sql);
+		$rows = mysqli_num_rows($resultado_medico);
+		if($rows == 0) {
+			echo "";
+		} else {
+			$i = 0;
+			while($resultado = mysqli_fetch_assoc($resultado_medico)) {
+				$array[$i] = array('ano'=>$resultado['ano'], 'mes'=>$resultado['mes'], 'dia'=>$resultado['dia'], 'hora'=>$resultado['hora'], 'duracao'=>$resultado['duracao']);
+				$i++;
+			}
 
-		$resultado = mysqli_fetch_assoc($resultado_medico);
+			echo json_encode($array);
+		}
 
-		echo $resultado['ano'].";".$resultado['mes'].";".$resultado['dia'].";".$resultado['hora'].";".$resultado['duracao'];
+		
+	}
+
+	if(isset($_POST['id_consulta'])) {
+		$id_consulta = $_POST['id_consulta'];
+		$sql = "SELECT * FROM tb_tipo_consulta where id = ".$id_consulta;
+		$resultado_tp = mysqli_query($objConnection->getConn(), $sql);
+		$resultado = mysqli_fetch_assoc($resultado_tp);
+
+		echo $resultado['id'].";".$resultado['duracao'];
 	}
 ?>
